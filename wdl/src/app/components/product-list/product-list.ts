@@ -21,7 +21,7 @@ export class ProductListComponent {
   ];
 
     selectedProduct: Product | null = null;
-    newProduct: Product = { name: '', price: 0, description: '' };
+    newProduct: any = { name: '', price: null, description: '' };
   
     selectProduct(product: Product) {
       this.selectedProduct = product;
@@ -35,9 +35,10 @@ export class ProductListComponent {
   }
     }
     addProduct() {
-  if (this.newProduct.name && this.newProduct.price > 0) {
-    this.products.push({ ...this.newProduct }); // Aggiunge una copia del nuovo prodotto
-    this.newProduct = { name: '', price: 0, description: '' }; // Svuota il form
-  }
+    if (this.newProduct.name && this.newProduct.price > 0) {
+    this.products.push({ ...this.newProduct }); 
+    // Qui resettiamo tutto, mettendo di nuovo null al prezzo
+    this.newProduct = { name: '', price: null, description: '' }; 
     }
   }
+}
